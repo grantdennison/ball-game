@@ -117,7 +117,7 @@
       sx: 0,
       sy: 300,
       // end position
-      ex: contW,
+      ex: contW / 2,
       ey: 300,
       m: true,
       // line thickness
@@ -133,7 +133,7 @@
 
     let obj2 = {
       //start postions
-      sx: 0,
+      sx: contW / 2,
       sy: 400,
       // end position
       ex: contW,
@@ -242,8 +242,8 @@
       if (goal.m === 5) {
         goal.x = contW - 100;
         goal.y = 800;
-        ball.s += 1;
       }
+      ball.s += 1;
       goal.m += goal.m > 4 ? -4 : 1;
     }
 
@@ -266,7 +266,7 @@
       // Add obj1 motion
       obj1.ex += obj1.m === true ? -objSpeed : objSpeed;
       if (obj1.ex < 5) obj1.m = false;
-      if (obj1.ex > contW - 5) obj1.m = true;
+      if (obj1.ex > contW / 2) obj1.m = true;
 
       //check if ball hits obj1
       if (obj1.ey + 6 > ballT && ballB > obj1.ey - 6 && ballL < obj1.ex) {
@@ -275,7 +275,7 @@
       }
       // Add obj2 motion
       obj2.sx += obj2.m === true ? -objSpeed : objSpeed;
-      if (obj2.sx < 5) obj2.m = false;
+      if (obj2.sx < contW / 2) obj2.m = false;
       if (obj2.sx > contW - 5) obj2.m = true;
 
       //check if ball hits obj2
@@ -336,30 +336,30 @@
     }
 
     // Change the ball direction
-    arrowLeft.addEventListener(`click`, () => {
-      if (ball.vx <= 0 && raf !== 0) {
-        ball.vx = -ball.s;
-        ball.vy = 0;
-      }
-    });
-    arrowRight.addEventListener(`click`, () => {
-      if (ball.vx >= 0 && raf !== 0) {
-        ball.vx = ball.s;
-        ball.vy = 0;
-      }
-    });
-    arrowUp.addEventListener(`click`, () => {
-      if (ball.vy <= 0 && raf !== 0) {
-        ball.vx = 0;
-        ball.vy = -ball.s;
-      }
-    });
-    arrowDown.addEventListener(`click`, () => {
-      if (ball.vy >= 0 && raf !== 0) {
-        ball.vx = 0;
-        ball.vy = ball.s;
-      }
-    });
+    // arrowLeft.addEventListener(`click`, () => {
+    //   if (ball.vx <= 0 && raf !== 0) {
+    //     ball.vx = -ball.s;
+    //     ball.vy = 0;
+    //   }
+    // });
+    // arrowRight.addEventListener(`click`, () => {
+    //   if (ball.vx >= 0 && raf !== 0) {
+    //     ball.vx = ball.s;
+    //     ball.vy = 0;
+    //   }
+    // });
+    // arrowUp.addEventListener(`click`, () => {
+    //   if (ball.vy <= 0 && raf !== 0) {
+    //     ball.vx = 0;
+    //     ball.vy = -ball.s;
+    //   }
+    // });
+    // arrowDown.addEventListener(`click`, () => {
+    //   if (ball.vy >= 0 && raf !== 0) {
+    //     ball.vx = 0;
+    //     ball.vy = ball.s;
+    //   }
+    // });
 
     //Key press
     window.addEventListener("keydown", function (e) {
